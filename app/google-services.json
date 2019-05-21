@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "345190464388",
+    "firebase_url": "https://vluverbeta.firebaseio.com",
+    "project_id": "vluverbeta",
+    "storage_bucket": "vluverbeta.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:345190464388:android:f260c54052da58ce",
+        "android_client_info": {
+          "package_name": "com.vluver.beta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "345190464388-bf0u8pjs0e1v3o0b982n99sakl9nu87m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vluver.beta",
+            "certificate_hash": "77b9a8fac0f9b26dc2146b5ba508995ef14c1ad3"
+          }
+        },
+        {
+          "client_id": "345190464388-6fo9gacj9u8fh7u40ipgcgreholvmtdp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAw3LbOuIljo7u9SulRQhIJNhXLpezVGUs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "345190464388-6fo9gacj9u8fh7u40ipgcgreholvmtdp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

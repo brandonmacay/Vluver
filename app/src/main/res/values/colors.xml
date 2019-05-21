@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="colorPrimary">#6200ea</color>
+    <color name="colorPrimaryDark">#ffffff</color>
+    <color name="colorAccent">#6200ea</color>
+
+
+    <color name="colorblind">#BBBBBB</color>
+    <color name="grey_transparent">#9bf2eeee</color>
+    <color name="item_div_grid">#000000</color>
+    <color name="textlikeColorSelected">#540bff</color>
+
+
+    <!--//Colores oscuros-->
+    <color name="itempostblack">#0F0F0F</color>
+    <color name="backroudnrecyclerview" tools:ignore="MissingDefaultResource">#000000</color>
+</resources>

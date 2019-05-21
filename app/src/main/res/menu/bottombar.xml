@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/feed"
+        android:enabled="true"
+        android:icon="@drawable/feed_selector"
+        android:title="Inicio"
+        app:showAsAction="ifRoom"
+
+        />
+    <item
+        android:id="@+id/ads"
+        android:enabled="true"
+        android:title="Avisos"
+        android:icon="@drawable/ads_selector"
+        app:showAsAction="ifRoom"
+        />
+
+    <item
+        android:id="@+id/map"
+        android:enabled="true"
+        android:icon="@drawable/map_selector"
+        android:title="Descubrir"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/notifications"
+        android:enabled="true"
+        android:icon="@drawable/notification_selector"
+        android:title="Novedad"
+        app:showAsAction="ifRoom"
+        />
+</menu>

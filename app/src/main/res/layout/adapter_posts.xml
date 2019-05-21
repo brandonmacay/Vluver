@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="3dp">
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardElevation="10dp"
+        card_view:cardCornerRadius="5dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="7dp"
+                >
+                <ImageView
+                    android:id="@+id/user_profile"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:paddingHorizontal="8dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/nombres"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="clip_vertical"
+                        android:text="sadasdasdad"
+                        android:textColor="#616161"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:typeface="sans" />
+
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:textColor="#616161"
+                        android:textSize="10.5sp" />
+                </LinearLayout>
+                <ImageButton
+                    android:id="@+id/options"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:padding="10dp"
+                    android:scaleType="fitEnd"
+                    android:src="@drawable/mas_opciones"
+                    android:tint="#b9b9b9" />
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:visibility="gone"
+                android:textSize="19sp"
+                android:text="Vluver hackeado puto .i."
+                android:textColor="#E0E0E0"
+                android:textAlignment="center"
+                />
+
+
+            <!--<com.my.vluver.Assymetric.AsymmetricRecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_height="match_parent"
+                android:background="#ffffff"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="3dp"
+                android:fadingEdge="none"
+                android:focusable="false"
+                android:gravity="center"
+                android:listSelector="#00000000">
+
+            </com.my.vluver.Assymetric.AsymmetricRecyclerView>-->
+            <include
+                layout="@layout/grid_item2"/>
+            <include
+                layout="@layout/grid_item3"/>
+            <include
+                layout="@layout/grid_item4"/>
+            <include
+                layout="@layout/grid_item5"/>
+
+            <ImageView
+                android:id="@+id/onlyimage"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:maxHeight="600dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Esto es una descripcion de prueba Vluver 15/12/2018"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginVertical="15dp"
+                android:textColor="@color/backroudnrecyclerview"
+                android:textSize="17sp" />
+            <Button
+                android:id="@+id/view_moretxt"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_marginLeft="6dp"
+                android:text="Saber mas"
+                android:textColor="#6041d1"
+                android:background="@android:color/transparent"
+                android:layout_marginStart="6dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                >
+
+                <TextView
+                    android:id="@+id/likes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:text="13k likes"
+                    android:layout_gravity="center"
+                    />
+                <TextView
+                    android:id="@+id/comentarios"
+                    android:layout_gravity="center"
+                    android:text="1k  comentarios"
+                    android:gravity="end"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/colorblind" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    />
+                <LinearLayout
+                    android:id="@+id/lnlike"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:orientation="horizontal"
+                    android:focusable="true">
+
+                    <ImageButton
+                        android:id="@+id/btnLike"
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                        android:clickable="false"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_heart_outline_grey" />
+                    <TextView
+                        android:id="@+id/txtlike"
+                        android:clickable="false"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Me gusta"
+                        android:textColor="#A09E9E"
+                        />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="4"
+                    />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:clickable="true"
+                    android:layout_weight="1"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:orientation="horizontal"
+                    android:focusable="true">
+
+                    <ImageButton
+                        android:id="@+id/btncomment"
+                        android:clickable="false"
+                        android:layout_width="48dp"
+                        android:layout_height="40dp"
+                        android:tint="#8e8e8e"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_chat"
+
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Comentar"
+                        android:clickable="false"
+                        android:textColor="#A09E9E"
+                        />
+                </LinearLayout>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+
+</RelativeLayout>
