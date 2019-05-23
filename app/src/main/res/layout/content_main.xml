@@ -8,22 +8,17 @@
     tools:context=".MainActivity"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/app_bar_main">
+
     <com.vluver.beta.adapter.BottomNavigationViewPager
         android:id="@+id/contentContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/bottom_navigation"
         />
-
-
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:elevation="5dp"
         app:itemTextColor="@color/backroudnrecyclerview"
-        app:menu="@menu/bottombar" />
-    <!--<include
-        android:id="@+id/bottomBar"
-        layout="@layout/bottoms_bar"/>-->
+        app:menu="@menu/bottombar"/>
 </RelativeLayout>

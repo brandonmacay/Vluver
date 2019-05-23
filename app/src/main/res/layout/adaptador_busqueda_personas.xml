@@ -1,0 +1,43 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    android:focusable="true">
+
+    <ImageView
+        android:id="@+id/circleImageView_search_user"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:foregroundGravity="center_vertical"
+        android:src="@drawable/noneimg"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:textColor="@android:color/black"
+        android:id="@+id/search_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="12dp"
+        android:layout_toEndOf="@+id/circleImageView_search_user"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginLeft="12dp"
+        android:layout_toRightOf="@+id/circleImageView_search_user" />
+    <TextView
+        android:id="@+id/search_user_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/search_user_name"
+        android:layout_below="@+id/search_user_name"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#666"
+        android:layout_alignLeft="@+id/search_user_name" />
+
+</RelativeLayout>

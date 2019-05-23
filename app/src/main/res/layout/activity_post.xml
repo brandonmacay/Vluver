@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.vluver.beta.activities.PostActivity"
-    android:background="@color/backroudnrecyclerview"
     >
     <RelativeLayout
         android:layout_width="match_parent"
@@ -73,9 +72,10 @@
                         android:gravity="center_vertical"
                         android:textSize="18sp"
                         android:textColorHint="@color/colorblind"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/backroudnrecyclerview"
                         android:scrollbars="vertical"
                         android:padding="14dp"
+                        android:inputType="textCapWords"
                         android:layout_height="match_parent" />
                     <ImageView
                         android:id="@+id/new_post_picture"
@@ -106,13 +106,12 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
-                android:background="@color/itempostblack"
                 android:layout_height="wrap_content">
                 <ImageView
                     android:id="@+id/new_post_submit"
                     android:adjustViewBounds="true"
                     android:src="@drawable/imagen"
-                    android:tint="@android:color/white"
+                    android:tint="@color/colorPrimary"
                     android:layout_width="wrap_content"
                     android:padding="13dp"
                     android:layout_height="wrap_content" />

@@ -8,20 +8,20 @@
     tools:context=".MainActivity"
     >
 
+
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:background="@android:color/transparent">
 
         <com.mancj.materialsearchbar.MaterialSearchBar
             android:id="@+id/searchBar"
             style="@style/MaterialSearchBarLight"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             app:mt_navIconEnabled="true"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:mt_placeholder="Vluver" />
+            app:mt_placeholder="Buscar en Vluver..." />
     </android.support.design.widget.AppBarLayout>
 
     <android.support.design.widget.FloatingActionButton

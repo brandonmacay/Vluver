@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v4.util.LruCache;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
@@ -26,7 +27,7 @@ public class MySingleton {
         mImageLoader = new ImageLoader(mRequestQueue,
                 new ImageLoader.ImageCache() {
                     private final LruCache<String, Bitmap>
-                            cache = new LruCache<String, Bitmap>(20);
+                            cache = new LruCache<String, Bitmap>(50);
 
 
                     @Override
@@ -43,7 +44,7 @@ public class MySingleton {
 
     public static synchronized MySingleton getInstance(Context context) {
         if (mInstance == null) {
-            mInstance = new MySingleton(context);
+            mInstance = new MySingleton(context.getApplicationContext());
         }
         return mInstance;
     }
@@ -58,6 +59,7 @@ public class MySingleton {
     }
 
     public <T> void addToRequestQueue(Request<T> req) {
+        req.setRetryPolicy(new DefaultRetryPolicy(10000, 1, 1.0f));
         getRequestQueue().add(req);
     }
 

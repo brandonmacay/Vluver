@@ -1,5 +1,7 @@
 package com.vluver.beta;
 
+import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +13,8 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -30,19 +34,36 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.mancj.materialsearchbar.MaterialSearchBar;
+import com.mancj.materialsearchbar.adapter.SuggestionsAdapter;
 import com.vluver.beta.activities.PostActivity;
+import com.vluver.beta.activities.searchinvluver.SearchInVluver;
 import com.vluver.beta.adapter.BottomMenuItemAdapter;
 import com.vluver.beta.adapter.BottomNavigationViewPager;
+import com.vluver.beta.adapter.SearchUserAdapter;
 import com.vluver.beta.fragments.Inicio;
+import com.vluver.beta.model.SearchUser;
+import com.vluver.beta.serviceVolley.VolleySingleton;
 import com.vluver.beta.utils.FragmentHistory;
 import com.vluver.beta.utils.GlideLoadImages;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+
+import static android.support.constraint.Constraints.TAG;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, MaterialSearchBar.OnSearchActionListener {
@@ -57,6 +78,7 @@ public class MainActivity extends AppCompatActivity
     private ImageView avatar;
     MaterialSearchBar searchBar;
     private DrawerLayout drawer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +91,7 @@ public class MainActivity extends AppCompatActivity
                 startActivity(new Intent(MainActivity.this, PostActivity.class));
             }
         });
+
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         View headerView = navigationView.getHeaderView(0);
@@ -79,23 +102,15 @@ public class MainActivity extends AppCompatActivity
 
         navigationView.setNavigationItemSelectedListener(this);
         searchBar.setOnSearchActionListener(this);
-        searchBar.inflateMenu(R.menu.main);
-        searchBar.addTextChangeListener(new TextWatcher() {
+        searchBar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SearchInVluver.class);
+                startActivity(intent);
+                overridePendingTransition(0,0);
             }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                Log.d("LOG_TAG", getClass().getSimpleName() + " text changed " + searchBar.getText());
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-
         });
+        searchBar.inflateMenu(R.menu.main);
         fragmentHistory = new FragmentHistory();
         mBottomNavigationViewPager = (BottomNavigationViewPager) findViewById(R.id.contentContainer);
         mBottomMenuItemAdapter = new BottomMenuItemAdapter(getSupportFragmentManager());
@@ -111,26 +126,31 @@ public class MainActivity extends AppCompatActivity
                 int numero = 0;
                 switch (menuItem.getItemId()) {
                     case R.id.feed:
+                        floatingActionButton.show();
                         mBottomNavigationViewPager.setCurrentItem(0, true);
                         frag = mBottomMenuItemAdapter.getCurrentFragment();
                         break;
                     case R.id.ads:
                         numero = 1;
+                        floatingActionButton.hide();
                         mBottomNavigationViewPager.setCurrentItem(1, true);
                         frag = mBottomMenuItemAdapter.getCurrentFragment();
                         break;
                     case R.id.map:
                         numero = 2;
+                        floatingActionButton.hide();
                         mBottomNavigationViewPager.setCurrentItem(2, true);
                         frag = mBottomMenuItemAdapter.getCurrentFragment();
                         break;
                     case R.id.notifications:
                         numero = 3;
+                        floatingActionButton.hide();
                         mBottomNavigationViewPager.setCurrentItem(3, true);
                         frag = mBottomMenuItemAdapter.getCurrentFragment();
                         break;
                     default:
                         numero = 0;
+                        floatingActionButton.show();
                         mBottomNavigationViewPager.setCurrentItem(0, true);
                         frag = mBottomMenuItemAdapter.getCurrentFragment();
                         break;
@@ -151,15 +171,19 @@ public class MainActivity extends AppCompatActivity
                 switch (i){
                     case 0:
                         bottomNavigation.getMenu().findItem(R.id.feed).setChecked(true);
+                        floatingActionButton.show();
                         break;
                     case 1:
                         bottomNavigation.getMenu().findItem(R.id.ads).setChecked(true);
+                        floatingActionButton.hide();
                         break;
                     case 2:
                         bottomNavigation.getMenu().findItem(R.id.map).setChecked(true);
+                        floatingActionButton.hide();
                         break;
                     case 3:
                         bottomNavigation.getMenu().findItem(R.id.notifications).setChecked(true);
+                        floatingActionButton.hide();
                         break;
                 }
                 fragmentHistory.push(i);
@@ -325,7 +349,6 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onSearchStateChanged(boolean enabled) {
-
     }
 
     @Override
@@ -333,6 +356,7 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    @SuppressLint("RtlHardcoded")
     @Override
     public void onButtonClicked(int buttonCode) {
         switch (buttonCode) {
@@ -346,4 +370,5 @@ public class MainActivity extends AppCompatActivity
                 break;
         }
     }
+
 }

@@ -20,6 +20,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.vluver.beta.serviceVolley.MySingleton;
 import com.vluver.beta.serviceVolley.VolleyMultipartRequest;
+import com.vluver.beta.utils.ConvertBitmapToByte;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -91,68 +92,15 @@ public class UploadImagesPost extends IntentService {
                 // file name could found file base or direct access from real path
                 //for now just get bitmap data from ImageView
                 for (int i = 0; i < finalMPhotos.size(); i++) {
-                    Uri file = Uri.fromFile(new File(finalMPhotos.get(i)));
-                    Bitmap bitmap = null;
-                    try {
-                        bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), file);
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-                    try {
-                        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                        changeOrientation(bitmap,file.getPath()).compress(Bitmap.CompressFormat.JPEG, 90, byteArrayOutputStream);
-                        params.put("fileToUpload[" + i + "]", new DataPart(imagename + i + ".jpg",  byteArrayOutputStream.toByteArray(), "image/*"));
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                    params.put("fileToUpload[" + i + "]", new DataPart(imagename + i + ".jpg", ConvertBitmapToByte.getfilebytefromuri(UploadImagesPost.this,finalMPhotos.get(i)), "image/*"));
 
                 }
                 return params;
             }
         };
-        multipartRequest.setRetryPolicy(new DefaultRetryPolicy(10000, 1, 1.0f));
         MySingleton.getInstance(UploadImagesPost.this).addToRequestQueue(multipartRequest);
 
-
-
     }
-    public static Bitmap changeOrientation(Bitmap bitmap, String imagePath) throws IOException {
-        ExifInterface ei = new ExifInterface(imagePath);
-        int orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
 
-        switch (orientation) {
-            case ExifInterface.ORIENTATION_ROTATE_90:
-                return rotate(bitmap, 90);
-
-            case ExifInterface.ORIENTATION_ROTATE_180:
-                return rotate(bitmap, 180);
-
-            case ExifInterface.ORIENTATION_ROTATE_270:
-                return rotate(bitmap, 270);
-
-            case ExifInterface.ORIENTATION_FLIP_HORIZONTAL:
-                return flip(bitmap, true, false);
-
-            case ExifInterface.ORIENTATION_FLIP_VERTICAL:
-                return flip(bitmap, false, true);
-
-            default:
-                return bitmap;
-        }
-    }
-    public static Bitmap rotate(Bitmap source, float angle) {
-        Matrix matrix = new Matrix();
-        matrix.postRotate(angle);
-        return Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(),
-                matrix, true);
-    }
-    public static Bitmap flip(Bitmap bitmap, boolean horizontal, boolean vertical) {
-        Matrix matrix = new Matrix();
-        matrix.preScale(horizontal ? -1 : 1, vertical ? -1 : 1);
-        return Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
-    }
 
 }
