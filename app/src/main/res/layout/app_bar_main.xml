@@ -7,12 +7,12 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     >
-
-
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent">
+        android:background="@android:color/transparent"
+        app:elevation="0dp"
+        >
 
         <com.mancj.materialsearchbar.MaterialSearchBar
             android:id="@+id/searchBar"
@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             app:mt_navIconEnabled="true"
-            app:layout_scrollFlags="scroll|enterAlways"
+            app:layout_scrollFlags="scroll|snap|enterAlways"
             app:mt_placeholder="Buscar en Vluver..." />
     </android.support.design.widget.AppBarLayout>
 
@@ -37,6 +37,7 @@
         app:elevation="@dimen/cardview_default_elevation"
         />
 
-    <include layout="@layout/content_main" />
+    <include layout="@layout/content_main"
+        />
 
 </android.support.design.widget.CoordinatorLayout>

@@ -2,6 +2,7 @@ package com.vluver.beta.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ import com.alexvasilkov.events.Events;
 import com.alexvasilkov.gestures.animation.ViewPosition;
 import com.vluver.beta.R;
 import com.vluver.beta.activities.FullGestureImage;
+import com.vluver.beta.activities.FullScreen;
 import com.vluver.beta.base.CrossEvents;
 import com.vluver.beta.model.Posts;
 import com.vluver.beta.utils.GlideLoadImages;

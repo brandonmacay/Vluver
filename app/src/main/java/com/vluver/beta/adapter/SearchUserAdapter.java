@@ -9,10 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.RequestOptions;
-import com.vluver.beta.FoundUserActivity;
+import com.vluver.beta.activities.FoundUserActivity;
 import com.vluver.beta.R;
 import com.vluver.beta.model.SearchUser;
 import com.vluver.beta.utils.GlideLoadImages;

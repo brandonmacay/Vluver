@@ -4,6 +4,9 @@ import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -31,6 +34,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,12 +43,14 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.bumptech.glide.Glide;
 import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.mancj.materialsearchbar.MaterialSearchBar;
 import com.mancj.materialsearchbar.adapter.SuggestionsAdapter;
 import com.vluver.beta.activities.PostActivity;
+import com.vluver.beta.activities.ServiceBusiness.RegisterBusiness;
 import com.vluver.beta.activities.searchinvluver.SearchInVluver;
 import com.vluver.beta.adapter.BottomMenuItemAdapter;
 import com.vluver.beta.adapter.BottomNavigationViewPager;
@@ -62,8 +69,12 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.ExecutionException;
+
+import jp.wasabeef.glide.transformations.BlurTransformation;
 
 import static android.support.constraint.Constraints.TAG;
+import static com.bumptech.glide.request.RequestOptions.bitmapTransform;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, MaterialSearchBar.OnSearchActionListener {
@@ -78,7 +89,8 @@ public class MainActivity extends AppCompatActivity
     private ImageView avatar;
     MaterialSearchBar searchBar;
     private DrawerLayout drawer;
-
+    private LinearLayout registerbusiness;
+    private ImageView blurry;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,6 +110,14 @@ public class MainActivity extends AppCompatActivity
         names = (TextView) headerView.findViewById(R.id.name_user);
         email = (TextView) headerView.findViewById(R.id.email_user);
         avatar = (ImageView) headerView.findViewById(R.id.avatar_user);
+        blurry = (ImageView)headerView.findViewById(R.id.blurryimg);
+        registerbusiness = (LinearLayout) headerView.findViewById(R.id.register_business);
+        registerbusiness.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, RegisterBusiness.class));
+            }
+        });
         searchBar = findViewById(R.id.searchBar);
 
         navigationView.setNavigationItemSelectedListener(this);
@@ -196,14 +216,10 @@ public class MainActivity extends AppCompatActivity
         });
         //bottomNavigation.setSelectedItemId(R.id.feed);
         //setCurrentItem(0);
-        getdataUser();
     }
 
-    private void getdataUser(){
-        names.setText(Objects.requireNonNull(mAuth.getCurrentUser()).getDisplayName());
-        email.setText(mAuth.getCurrentUser().getEmail());
-        GlideLoadImages.loadAvatar(MainActivity.this, String.valueOf(mAuth.getCurrentUser().getPhotoUrl()),avatar);
-    }
+
+
 
     @Override
     public void onBackPressed() {
@@ -283,14 +299,22 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+    private void getdataUser(String avatarurl){
+        names.setText(Objects.requireNonNull(mAuth.getCurrentUser()).getDisplayName());
+        email.setText(mAuth.getCurrentUser().getEmail());
+        GlideLoadImages.loadAvatar(MainActivity.this, avatarurl,avatar);
+        GlideLoadImages.setBlurrimg(MainActivity.this,avatarurl,blurry);
 
+    }
     @Override
     protected void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser == null){
             updateUI();
-
+        }else {
+            String avatar = "https://graph.facebook.com/" + currentUser.getProviderData().get(1).getUid() + "/picture?height=150";
+            getdataUser(avatar);
         }
     }
     private void updateUI(){

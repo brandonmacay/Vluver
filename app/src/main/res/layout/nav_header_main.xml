@@ -3,69 +3,83 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="bottom"
     android:orientation="vertical"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
-
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/side_nav_bar"
-        android:gravity="bottom"
-        android:orientation="vertical"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark">
+        >
         <ImageView
-            android:id="@+id/avatar_user"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:contentDescription="@string/nav_header_desc"
-            android:paddingTop="@dimen/nav_header_vertical_spacing" />
-
-        <TextView
-            android:id="@+id/name_user"
+            android:scaleType="centerCrop"
+            android:minHeight="170dp"
+            android:maxHeight="170dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/nav_header_vertical_spacing"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
-        <TextView
-            android:id="@+id/email_user"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/blurryimg"
+            android:adjustViewBounds="true"
             />
-        
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:gravity="center"
+            >
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:background="@android:color/transparent"
+                />
+            <ImageView
+                android:id="@+id/avatar_user"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                />
+
+            <TextView
+                android:id="@+id/name_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/nav_header_vertical_spacing"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:id="@+id/email_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+    </RelativeLayout>
     
     <LinearLayout
+        android:id="@+id/register_business"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="?android:selectableItemBackground"
+        android:background="?android:attr/selectableItemBackground"
         android:padding="5dp"
-        android:gravity="center"
         android:focusable="true"
         android:clickable="true"
         >
-        <android.support.design.widget.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
             android:src="@drawable/mas"
-            android:tint="#FFFF"
-            app:backgroundTint="#CB5439EB"
-
-            />
+            android:tint="#777777"
+            android:layout_marginLeft="13dp"
+            android:layout_marginStart="13dp" />
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
             android:text="Registrar negocio"
-            android:layout_gravity="center"
+            android:gravity="center"
             android:textColor="@color/searchBarBackIconTintColor"
-            android:layout_marginStart="10dp" />
+            android:layout_marginStart="15dp" />
     </LinearLayout>
 
 </LinearLayout>

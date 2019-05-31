@@ -18,8 +18,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
-            android:name=".activities.searchinvluver.SearchInVluver" />
-        <activity android:name=".FoundUserActivity" />
+            android:name=".activities.FullScreen"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_full_screen"
+            android:theme="@style/FullscreenTheme" />
+        <activity android:name=".activities.ServiceBusiness.RegisterBusiness" />
+        <activity android:name=".activities.searchinvluver.SearchInVluver" />
+        <activity android:name=".activities.FoundUserActivity" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -31,7 +36,9 @@
             android:label="@string/app_name" />
         <activity
             android:name=".activities.FullGestureImage"
-            android:theme="@style/AppTheme.Transparent" />
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_full_screen"
+            android:theme="@style/FullscreenTheme"/>
         <activity android:name=".RegisterUser" />
         <activity
             android:name="com.facebook.CustomTabActivity"

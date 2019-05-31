@@ -75,7 +75,7 @@
                         android:textColor="@color/backroudnrecyclerview"
                         android:scrollbars="vertical"
                         android:padding="14dp"
-                        android:inputType="textCapWords"
+                        android:inputType="textCapSentences|text"
                         android:layout_height="match_parent" />
                     <ImageView
                         android:id="@+id/new_post_picture"
