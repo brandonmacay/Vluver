@@ -18,7 +18,7 @@
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_height="46dp"
+        android:layout_height="wrap_content"
         android:foregroundGravity="bottom|center"
         app:itemTextColor="@color/backroudnrecyclerview"
         app:menu="@menu/bottombar" />

@@ -23,7 +23,7 @@
             android:label="@string/title_activity_full_screen"
             android:theme="@style/FullscreenTheme" />
         <activity android:name=".activities.ServiceBusiness.RegisterBusiness" />
-        <activity android:name=".activities.searchinvluver.SearchInVluver" />
+        <activity android:name=".activities.searchinvluver.SearchInVluver" android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".activities.FoundUserActivity" />
 
         <meta-data
