@@ -33,7 +33,7 @@
                 tools:targetApi="lollipop"
                 android:textSize="40sp"
                 android:layout_gravity="center"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/colorAccent"
                 />
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -69,8 +69,8 @@
             </android.support.design.widget.TextInputLayout>
 
             <Button
-                android:background="@color/colorPrimaryDark"
-                android:textColor="#FFFFFF"
+                android:background="#1B7152FC"
+                android:textColor="@color/colorAccent"
                 android:id="@+id/email_sign_in_button"
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
@@ -94,8 +94,8 @@
                 android:layout_marginBottom="30dp" />
 
             <Button
-                android:textColor="#FFFFFF"
-                android:background="@color/colorPrimaryDark"
+                android:textColor="@color/colorAccent"
+                android:background="#1B7152FC"
                 android:id="@+id/email_register_button"
                 style="?android:textAppearanceSmall"
                 android:layout_margin="50dp"

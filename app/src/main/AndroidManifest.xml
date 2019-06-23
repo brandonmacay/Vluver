@@ -38,7 +38,9 @@
             android:name=".activities.FullGestureImage"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_full_screen"
-            android:theme="@style/FullscreenTheme"/>
+            android:theme="@style/FullscreenTheme"
+
+            />
         <activity android:name=".RegisterUser" />
         <activity
             android:name="com.facebook.CustomTabActivity"
@@ -59,7 +61,7 @@
 
         <activity android:name=".activities.PostActivity" />
         <activity android:name="com.tangxiaolv.telegramgallery.GalleryActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".LoginActivity" android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"

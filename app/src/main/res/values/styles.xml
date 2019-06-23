@@ -29,14 +29,7 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="Dark">
-        <item name="colorPrimary">#000000</item>
-        <item name="colorPrimaryDark">#000000</item>
-        <item name="colorAccent">#000000</item>
-        <item name="android:statusBarColor">#FFFFFF</item>
-        <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
-    </style>
-    <style name="FullscreenTheme" parent="Dark">
+    <style name="FullscreenTheme" parent="AppTheme">
         <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
         <item name="android:windowActionBarOverlay">true</item>
         <item name="android:windowIsTranslucent">true</item>

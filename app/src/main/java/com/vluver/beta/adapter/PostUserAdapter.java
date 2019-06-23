@@ -202,7 +202,7 @@ public class PostUserAdapter extends RecyclerView.Adapter {
             ((PostsViewHolder) holder).dateTextView.setText(getpostsimet.getDate());
 
             String descripcion = getpostsimet.getDescription();
-            if (!descripcion.isEmpty()) {
+            if (descripcion != null) {
                /* descripcion.replace("  ", "\t");
                 int countLines = descripcion.split("[\n][\r][\t][  ]").length;
                 if (descripcion.length()> 150 || countLines > 4){
