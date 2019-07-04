@@ -1,13 +1,10 @@
 package com.vluver.beta.adapter;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
-import java.util.ArrayList;
-import java.util.List;
+import androidx.viewpager.widget.ViewPager;
 
 /**
  * Created by Vlover on 15/04/2018.

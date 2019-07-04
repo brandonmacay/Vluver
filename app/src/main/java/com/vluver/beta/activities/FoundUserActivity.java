@@ -1,13 +1,14 @@
 package com.vluver.beta.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.AppCompatButton;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -56,7 +57,7 @@ public class FoundUserActivity extends AppCompatActivity implements View.OnClick
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.follow:{
-                if (!btnFollower.getText().toString().equals("Siguiendo")){
+                if (btnFollower.getText().toString().equals("Seguir")){
                     btnFollower.setEnabled(false);
                     sendRequestFollow(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid(),data.getStringExtra("userUID"),0, Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getDisplayName());
                 }
@@ -69,11 +70,22 @@ public class FoundUserActivity extends AppCompatActivity implements View.OnClick
 
         String urlavatar = null;
         String namesUser = null;
+        int statefollow = 0;
         if (data != null) {
             urlavatar = data.getStringExtra("userAvatar");
             namesUser = data.getStringExtra("userName");
+            statefollow = data.getIntExtra("statefollower",0);
         }
-        RequestOptions optionb = new RequestOptions()
+        if (statefollow == 1){
+            btnFollower.setText("Siguiendo");
+        }else if (statefollow == 0){
+            btnFollower.setText("Esperando respuesta");
+        }else if (statefollow == 2){
+            btnFollower.setText("Seguir");
+        }else if (statefollow == 3){
+            btnFollower.setVisibility(View.GONE);
+
+        }        RequestOptions optionb = new RequestOptions()
                 //.centerCrop()
                 .fitCenter()
                 .placeholder(android.R.color.darker_gray)

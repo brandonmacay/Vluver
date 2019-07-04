@@ -1,9 +1,10 @@
 package com.vluver.beta.adapter;
 
-import android.support.annotation.NonNull;
-import android.support.v4.view.ViewPager;
 import android.view.Gravity;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.ViewPager;
 
 import com.alexvasilkov.gestures.Settings;
 import com.alexvasilkov.gestures.commons.RecyclePagerAdapter;

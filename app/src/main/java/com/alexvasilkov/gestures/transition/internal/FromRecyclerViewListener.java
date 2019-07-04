@@ -1,7 +1,7 @@
 package com.alexvasilkov.gestures.transition.internal;
 
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
 import com.alexvasilkov.gestures.transition.tracker.FromTracker;

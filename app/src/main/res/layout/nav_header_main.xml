@@ -53,33 +53,6 @@
                 />
         </LinearLayout>
     </RelativeLayout>
-    
-    <LinearLayout
-        android:id="@+id/register_business"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="?android:attr/selectableItemBackground"
-        android:padding="5dp"
-        android:focusable="true"
-        android:clickable="true"
-        >
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_gravity="center"
-            android:src="@drawable/mas"
-            android:tint="#777777"
-            android:layout_marginLeft="13dp"
-            android:layout_marginStart="13dp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_marginLeft="15dp"
-            android:text="Registrar negocio"
-            android:gravity="center"
-            android:textColor="@color/searchBarBackIconTintColor"
-            android:layout_marginStart="15dp" />
-    </LinearLayout>
+
 
 </LinearLayout>

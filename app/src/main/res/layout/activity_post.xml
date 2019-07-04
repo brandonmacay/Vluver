@@ -39,7 +39,7 @@
                 android:padding="15dp"
                 />
         </LinearLayout>
-        <android.support.v4.widget.NestedScrollView
+        <androidx.core.widget.NestedScrollView
             android:layout_above="@+id/ns"
             android:layout_width="match_parent"
             android:scrollbars="vertical"
@@ -83,17 +83,17 @@
                         android:layout_height="match_parent"
                         android:adjustViewBounds="true"
                         />
-                    <android.support.v7.widget.RecyclerView
+                    <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/multimages"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         >
-                    </android.support.v7.widget.RecyclerView>
+                    </androidx.recyclerview.widget.RecyclerView>
                 </LinearLayout>
             </LinearLayout>
-        </android.support.v4.widget.NestedScrollView>
+        </androidx.core.widget.NestedScrollView>
 
-        <android.support.v4.widget.NestedScrollView
+        <androidx.core.widget.NestedScrollView
             android:id="@+id/ns"
             android:background="#F4F4F4"
             android:layout_width="match_parent"
@@ -117,6 +117,6 @@
                     android:layout_height="wrap_content" />
 
             </LinearLayout>
-        </android.support.v4.widget.NestedScrollView>
+        </androidx.core.widget.NestedScrollView>
     </RelativeLayout>
 </FrameLayout>

@@ -2,15 +2,16 @@ package com.vluver.beta.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.vluver.beta.activities.FoundUserActivity;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.vluver.beta.R;
+import com.vluver.beta.activities.FoundUserActivity;
 import com.vluver.beta.model.SearchUser;
 import com.vluver.beta.utils.GlideLoadImages;
 
@@ -64,7 +65,6 @@ public class SearchUserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
         ImageView imageUserAvatar;
 
-
         // create constructor to get widget reference
         public MyHolder(View itemView) {
             super(itemView);
@@ -81,12 +81,12 @@ public class SearchUserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         // Click event for all items
         @Override
         public void onClick(View v) {
-
             Intent intent = new Intent(context, FoundUserActivity.class);
             intent.putExtra("userUID", data.get((getAdapterPosition())).userUID);
             intent.putExtra("userName", data.get((getAdapterPosition())).userName);
             intent.putExtra("userAvatar", data.get((getAdapterPosition())).userAvatar);
             intent.putExtra("userPrivacy",data.get((getAdapterPosition())).userPrivacy);
+            intent.putExtra("statefollower",data.get((getAdapterPosition())).statefollow);
             context.startActivity(intent);
 
         }

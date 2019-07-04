@@ -10,4 +10,5 @@ public class SearchUser {
     public String userAvatar;
     public String userUID;
     public int userPrivacy;
+    public int statefollow;//0=esperando respuesta 1=seguido 2=no seguido
 }

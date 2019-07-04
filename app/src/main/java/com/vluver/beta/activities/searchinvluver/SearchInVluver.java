@@ -1,23 +1,22 @@
 package com.vluver.beta.activities.searchinvluver;
 
 import android.app.ProgressDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.View;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.firebase.auth.FirebaseAuth;
 import com.mancj.materialsearchbar.MaterialSearchBar;
-import com.vluver.beta.MainActivity;
 import com.vluver.beta.R;
 import com.vluver.beta.adapter.SearchUserAdapter;
 import com.vluver.beta.model.SearchUser;
@@ -29,8 +28,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-import static android.support.constraint.Constraints.TAG;
 
 public class SearchInVluver extends AppCompatActivity implements  MaterialSearchBar.OnSearchActionListener{
     MaterialSearchBar searchBar;
@@ -41,6 +40,7 @@ public class SearchInVluver extends AppCompatActivity implements  MaterialSearch
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_search_in_vluver);
         searchBar = findViewById(R.id.searchBarMain);
         data=new ArrayList<>();
@@ -73,7 +73,7 @@ public class SearchInVluver extends AppCompatActivity implements  MaterialSearch
         finding.setMessage("Buscando...");
         finding.setCancelable(false);
         finding.show();
-        String url = "https://vluver.com/mobile/search/user_search.php?searchQuery="+text;
+        String url = "https://vluver.com/mobile/search/user_search.php?searchQuery="+text+"&usuario="+ Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
         VolleySingleton.
                 getInstance(SearchInVluver.this).
                 addToRequestQueue(
@@ -124,6 +124,9 @@ public class SearchInVluver extends AppCompatActivity implements  MaterialSearch
                     JSONArray objuserimage = postt.getJSONArray("avatar");
                     String avatar = objuserimage.getString(i);
 
+                    JSONArray statefollow = postt.getJSONArray("statefollow");
+                    int statefollower = statefollow.getInt(i);
+
                     JSONArray privacyUser = postt.getJSONArray("privacy");
                     int privacy = privacyUser.getInt(i);
                     SearchUser userData = new SearchUser();
@@ -133,6 +136,7 @@ public class SearchInVluver extends AppCompatActivity implements  MaterialSearch
                     userData.userUID = uid;
                     userData.userAvatar = avatar;
                     userData.userPrivacy = privacy;
+                    userData.statefollow = statefollower;
                     data.add(userData);
                 }
 
@@ -150,7 +154,6 @@ public class SearchInVluver extends AppCompatActivity implements  MaterialSearch
             }
 
         } catch (JSONException e) {
-            Log.d(TAG, e.getMessage());
             finding.dismiss();
             Toast.makeText(SearchInVluver.this, ""+e, Toast.LENGTH_SHORT).show();
         }

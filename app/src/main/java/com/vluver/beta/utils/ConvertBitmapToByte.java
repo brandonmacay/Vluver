@@ -8,13 +8,11 @@ import android.net.Uri;
 import android.provider.MediaStore;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 
 public class ConvertBitmapToByte {
 
-    public static byte[] getfilebytefromuri(Context context, String files) {
-        Uri file = Uri.fromFile(new File(files));
+    public static byte[] getfilebytefromuri(Context context, Uri file) {
         Bitmap bitmap = null;
         try {
             bitmap = MediaStore.Images.Media.getBitmap(context.getContentResolver(), file);

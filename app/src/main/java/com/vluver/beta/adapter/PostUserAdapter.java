@@ -2,13 +2,9 @@ package com.vluver.beta.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,15 +21,19 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.alexvasilkov.events.Events;
 import com.alexvasilkov.gestures.animation.ViewPosition;
 import com.vluver.beta.R;
 import com.vluver.beta.activities.FullGestureImage;
-import com.vluver.beta.activities.FullScreen;
 import com.vluver.beta.base.CrossEvents;
 import com.vluver.beta.model.Posts;
 import com.vluver.beta.utils.GlideLoadImages;
 import com.vluver.beta.utils.OnLoadMoreListener;
+
 import java.util.List;
 
 

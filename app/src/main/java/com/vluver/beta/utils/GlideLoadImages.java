@@ -1,7 +1,6 @@
 package com.vluver.beta.utils;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
@@ -16,11 +15,6 @@ import com.bumptech.glide.request.target.Target;
 import com.vluver.beta.R;
 
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
-
-import jp.wasabeef.glide.transformations.BlurTransformation;
-
-import static com.bumptech.glide.request.RequestOptions.bitmapTransform;
 
 /**
  * Created by brand on 6/17/2018.
@@ -52,7 +46,6 @@ public class GlideLoadImages {
                 //.fitCenter()
                 .placeholder(android.R.color.darker_gray)
                 .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-                .priority(Priority.IMMEDIATE)
                 .error(R.drawable.brokenimage);
 
         final RequestBuilder<Drawable> thumbRequest = Glide.with(context)
@@ -69,6 +62,7 @@ public class GlideLoadImages {
     public static void onlyimage(Context context, String path, String nameimg, ImageView imageView){
         RequestOptions optionb = new RequestOptions()
                 .format(DecodeFormat.PREFER_ARGB_8888)
+                .fitCenter()
                 .override(Target.SIZE_ORIGINAL)
                 .placeholder(android.R.color.darker_gray)
                 .error(R.drawable.brokenimage)
@@ -86,17 +80,6 @@ public class GlideLoadImages {
                 .into(imageView);
     }
 
-    public static void setBlurrimg(Context context, String url,ImageView imgview){
-        RequestOptions optionblurr = new RequestOptions()
-                //.centerCrop()
-                .fitCenter()
-                .apply(bitmapTransform(new BlurTransformation(60,4)))
-                .error(R.drawable.side_nav_bar);
-        Glide.with(context)
-                .load(url)
-                .apply(optionblurr)
-                .into(imgview);
-    }
     public static void fullImage(Context context, ArrayList<String> path, ArrayList<String> nameimg, int p, ImageView imageView, String thumb){
         RequestOptions optionb = new RequestOptions()
                 .format(DecodeFormat.PREFER_ARGB_8888)
@@ -121,4 +104,3 @@ public class GlideLoadImages {
     }
 
 }
-

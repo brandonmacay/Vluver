@@ -47,13 +47,13 @@
         android:gravity="center"
         android:layout_margin="10dp"
         >
-        <android.support.v7.widget.AppCompatButton
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/follow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Seguir"
             />
-        <android.support.v7.widget.AppCompatButton
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/chat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

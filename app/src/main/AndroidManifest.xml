@@ -60,7 +60,6 @@
             android:exported="false" />
 
         <activity android:name=".activities.PostActivity" />
-        <activity android:name="com.tangxiaolv.telegramgallery.GalleryActivity" />
         <activity android:name=".LoginActivity" android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".MainActivity"
