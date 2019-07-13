@@ -79,9 +79,8 @@ public class Inicio extends Fragment implements SwipeRefreshLayout.OnRefreshList
         recyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new PostUserAdapter(GetDataAdapter1,recyclerView,getContext());
         recyclerView.setAdapter(mAdapter);
-        recyclerView.setItemViewCacheSize(50);
+        recyclerView.setItemViewCacheSize(10);
         recyclerView.setDrawingCacheEnabled(true);
-        recyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
         /*recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {

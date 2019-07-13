@@ -7,7 +7,7 @@
 
     <color name="colorblind">#BBBBBB</color>
     <color name="grey_transparent">#9bf2eeee</color>
-    <color name="item_div_grid">#000000</color>
+    <color name="item_div_grid">#FFFFFF</color>
     <color name="textlikeColorSelected">#540bff</color>
 
 

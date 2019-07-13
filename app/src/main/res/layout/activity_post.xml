@@ -76,7 +76,8 @@
                         android:scrollbars="vertical"
                         android:padding="14dp"
                         android:inputType="textCapSentences|text"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:autofillHints="" />
                     <ImageView
                         android:id="@+id/new_post_picture"
                         android:layout_width="match_parent"

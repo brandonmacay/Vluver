@@ -143,6 +143,9 @@ public class PostActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (imageIsSet){
+
+
+
                     Intent mServiceIntent = new Intent(PostActivity.this, UploadImagesPost.class);
                     mServiceIntent.putExtra("userId", userId);
                     mServiceIntent.putParcelableArrayListExtra("mPhotos", encodedImageList);
