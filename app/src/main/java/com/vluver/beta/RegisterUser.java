@@ -294,7 +294,7 @@ public class RegisterUser extends AppCompatActivity {
                 });
     }
     private void registerUserToDB(String userId, String email, String fullnames, String avatar, String gender){
-        String url = "https://www.vluver.com/mobile/registerUserToDB.php";
+        String url = "https://mrsearch.000webhostapp.com/vluver/mobile/registerUserToDB.php";
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 url, new Response.Listener<String>(){
             @Override

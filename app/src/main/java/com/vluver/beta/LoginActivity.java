@@ -87,6 +87,7 @@ public class LoginActivity extends AppCompatActivity {
         FacebookSdk.setApplicationId(getResources().getString(R.string.facebook_app_id));
         callbackManager = CallbackManager.Factory.create();
 
+
         accessTokenTracker = new AccessTokenTracker() {
             @Override
             protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
@@ -176,7 +177,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
     private void registerUserToDB(final String userId, final String email, final String fullnames, final String avatar, final String gender){
-        String url = "https://www.vluver.com/mobile/registerUserToDB.php";
+        String url = "https://mrsearch.000webhostapp.com/vluver/mobile/registerUserToDB.php";
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 url, new Response.Listener<String>(){
             @Override
@@ -210,7 +211,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 progreso.dismiss();
                 Toast.makeText(getApplicationContext(),"234: "+
-                        error.getMessage(), Toast.LENGTH_LONG).show();
+                        error, Toast.LENGTH_LONG).show();
             }
         }) {
 
