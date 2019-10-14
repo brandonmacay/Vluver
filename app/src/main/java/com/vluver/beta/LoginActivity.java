@@ -191,11 +191,11 @@ public class LoginActivity extends AppCompatActivity {
                     }else{
                         String errorMsg = jsonObject.getString("error_msg");
                         if (errorMsg.equals("Este usuario ya existe")){
-                            updateUI();
+                            Toast.makeText(LoginActivity.this, "Este usuario ya existe", Toast.LENGTH_SHORT).show();
                             progreso.dismiss();
                         }else {
                             progreso.dismiss();
-                            Toast.makeText(LoginActivity.this, "Algo anda mal", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Algo anda mal"+errorMsg, Toast.LENGTH_SHORT).show();
                         }
                     }
 
