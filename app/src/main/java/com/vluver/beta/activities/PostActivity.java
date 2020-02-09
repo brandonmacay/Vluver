@@ -44,6 +44,8 @@ import gun0912.tedimagepicker.builder.listener.OnErrorListener;
 import gun0912.tedimagepicker.builder.listener.OnMultiSelectedListener;
 import gun0912.tedimagepicker.builder.type.MediaType;
 
+import static com.vluver.beta.Direccion.urlgeneral;
+
 
 public class PostActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
@@ -184,7 +186,7 @@ public class PostActivity extends AppCompatActivity {
     }
 
     private void insertPostToVluver(String creator, String codeuniqueimages, String description){
-        String url = "https://vluver.com/mobile/insert/insertPost.php";
+        String url = urlgeneral+"insert/insertPost.php";
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 url, new Response.Listener<String>(){
             @Override

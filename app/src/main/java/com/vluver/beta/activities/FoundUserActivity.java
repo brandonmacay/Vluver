@@ -31,6 +31,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import static com.vluver.beta.Direccion.urlgeneral;
+
 public class FoundUserActivity extends AppCompatActivity implements View.OnClickListener {
 
     ImageView avatar;
@@ -101,7 +103,7 @@ public class FoundUserActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void sendRequestFollow(String user_sender, String user_receiver, int accepted,String nameuser){
-        String url = "https://vluver.com/mobile/sendaction/followuser.php";
+        String url = urlgeneral+"sendaction/followuser.php";
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 url, new Response.Listener<String>(){
             @Override

@@ -37,6 +37,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.vluver.beta.Direccion.urlgeneral;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -112,7 +114,7 @@ public class Inicio extends Fragment implements SwipeRefreshLayout.OnRefreshList
                     mAdapter.notifyItemInserted(GetDataAdapter1.size());
                 }
 
-                String url = "http://vluver.com/mobile/get/getAllPostsByUser.php?user_id="+mAuth.getUid()+"&from="+fromId+"&casetype=2";
+                String url = urlgeneral+"get/getAllPostsByUser.php?user_id="+mAuth.getUid()+"&from="+fromId+"&casetype=2";
                 VolleySingleton.
                         getInstance(getContext()).
                         addToRequestQueue(
@@ -306,7 +308,7 @@ public class Inicio extends Fragment implements SwipeRefreshLayout.OnRefreshList
     }
 
     private void getPostsInicial(){
-        String url = "http://vluver.com/mobile/get/getAllPostsByUser.php?user_id="+mAuth.getUid()+"&from="+0+"&casetype=1";
+        String url = urlgeneral+"get/getAllPostsByUser.php?user_id="+mAuth.getUid()+"&from="+0+"&casetype=1";
         VolleySingleton.
                 getInstance(getContext()).
                 addToRequestQueue(
@@ -426,7 +428,7 @@ public class Inicio extends Fragment implements SwipeRefreshLayout.OnRefreshList
         if (GetDataAdapter1.size() > 7){
             mAdapter.notifyItemInserted(GetDataAdapter1.size());
         }
-        String url = "http://vluver.com/mobile/get/getAllPostsByUser.php?user_id="+mAuth.getUid()+"&from="+case3+"&casetype=3";
+        String url = urlgeneral+"get/getAllPostsByUser.php?user_id="+mAuth.getUid()+"&from="+case3+"&casetype=3";
         VolleySingleton.
                 getInstance(getContext()).
                 addToRequestQueue(

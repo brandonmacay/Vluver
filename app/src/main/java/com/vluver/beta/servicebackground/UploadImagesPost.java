@@ -63,6 +63,8 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
 
+import static com.vluver.beta.Direccion.urlgeneral;
+
 public class UploadImagesPost extends IntentService {
     RequestQueue mQueue;
     String userId;
@@ -99,7 +101,7 @@ public class UploadImagesPost extends IntentService {
         for (int i = 0; i < finalMPhotos.size(); i++) {
             SearchSafeWithUri(UploadImagesPost.this,finalMPhotos.get(i),finalMPhotos.size(),i+1);
         }
-         multipartRequest = new VolleyMultipartRequest(Request.Method.POST, "http://vluver.com/mobile/insert/api_post.php?apicall=uploadpic", new Response.Listener<NetworkResponse>() {
+         multipartRequest = new VolleyMultipartRequest(Request.Method.POST, urlgeneral+"insert/api_post.php?apicall=uploadpic", new Response.Listener<NetworkResponse>() {
             @Override
             public void onResponse(NetworkResponse response) {
                 try {

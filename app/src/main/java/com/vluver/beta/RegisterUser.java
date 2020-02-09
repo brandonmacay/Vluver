@@ -40,6 +40,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.vluver.beta.Direccion.urlgeneral;
+
 public class RegisterUser extends AppCompatActivity {
     ScrollView scrollView;
     private EditText nombres,apellidos,correo,clave, reclave;
@@ -294,7 +296,7 @@ public class RegisterUser extends AppCompatActivity {
                 });
     }
     private void registerUserToDB(String userId, String email, String fullnames, String avatar, String gender){
-        String url = "https://mrsearch.000webhostapp.com/vluver/mobile/registerUserToDB.php";
+        String url = urlgeneral+"registerUserToDB.php";
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 url, new Response.Listener<String>(){
             @Override

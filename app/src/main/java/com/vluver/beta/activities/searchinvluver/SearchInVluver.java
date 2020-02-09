@@ -30,6 +30,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import static com.vluver.beta.Direccion.urlgeneral;
+
 
 public class SearchInVluver extends AppCompatActivity implements  MaterialSearchBar.OnSearchActionListener{
     MaterialSearchBar searchBar;
@@ -73,7 +75,7 @@ public class SearchInVluver extends AppCompatActivity implements  MaterialSearch
         finding.setMessage("Buscando...");
         finding.setCancelable(false);
         finding.show();
-        String url = "https://vluver.com/mobile/search/user_search.php?searchQuery="+text+"&usuario="+ Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
+        String url = urlgeneral+"search/user_search.php?searchQuery="+text+"&usuario="+ Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
         VolleySingleton.
                 getInstance(SearchInVluver.this).
                 addToRequestQueue(

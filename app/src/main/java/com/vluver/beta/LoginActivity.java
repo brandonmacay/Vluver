@@ -47,6 +47,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.vluver.beta.Direccion.urlgeneral;
+
 public class LoginActivity extends AppCompatActivity {
     private ProgressDialog progreso;
 
@@ -177,7 +179,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
     private void registerUserToDB(final String userId, final String email, final String fullnames, final String avatar, final String gender){
-        String url = "https://mrsearch.000webhostapp.com/vluver/mobile/registerUserToDB.php";
+        String url = urlgeneral+"registerUserToDB.php";
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 url, new Response.Listener<String>(){
             @Override
