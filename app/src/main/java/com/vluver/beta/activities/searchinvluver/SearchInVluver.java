@@ -126,19 +126,19 @@ public class SearchInVluver extends AppCompatActivity implements  MaterialSearch
                     JSONArray objuserimage = postt.getJSONArray("avatar");
                     String avatar = objuserimage.getString(i);
 
-                    JSONArray statefollow = postt.getJSONArray("statefollow");
-                    int statefollower = statefollow.getInt(i);
+                    //JSONArray statefollow = postt.getJSONArray("statefollow");
+                    //int statefollower = statefollow.getInt(i);
 
-                    JSONArray privacyUser = postt.getJSONArray("privacy");
-                    int privacy = privacyUser.getInt(i);
+                    //JSONArray privacyUser = postt.getJSONArray("privacy");
+                    //int privacy = privacyUser.getInt(i);
                     SearchUser userData = new SearchUser();
 
                     userData.userName = fullnames;
                     userData.userEmail = email;
                     userData.userUID = uid;
                     userData.userAvatar = avatar;
-                    userData.userPrivacy = privacy;
-                    userData.statefollow = statefollower;
+                   // userData.userPrivacy = privacy;
+                   // userData.statefollow = statefollower;
                     data.add(userData);
                 }
 

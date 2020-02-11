@@ -12,14 +12,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="horizontal"
-            android:background="@color/colorAccent"
+            android:background="@color/colorPrimaryDark"
             android:layout_height="wrap_content">
             <ImageView
                 android:id="@+id/back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="?selectableItemBackground"
-                android:tint="@android:color/white"
                 android:src="@drawable/volver"
                 android:padding="15dp"
                 />
@@ -34,7 +33,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/publicar"
-                android:tint="@android:color/white"
                 android:background="?selectableItemBackground"
                 android:padding="15dp"
                 />

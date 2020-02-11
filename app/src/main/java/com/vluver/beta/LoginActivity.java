@@ -144,12 +144,7 @@ public class LoginActivity extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             if (user != null) {
                                 String avatar = "https://graph.facebook.com/" + user.getProviderData().get(1).getUid() + "/picture?height=150";
-                                if (user.getEmail() == null){
-                                    registerUserToDB(user.getUid(),user.getUid(),user.getDisplayName(),avatar,"");
-                                }else{
-                                    registerUserToDB(user.getUid(),user.getEmail(),user.getDisplayName(),avatar,"");
-                                }
-
+                                registerUserToDB(user.getUid(),user.getEmail(),user.getDisplayName(),avatar,"");
                                 Log.d("Datos re:","UID:"+user.getUid()+"\tEmail:"+user.getEmail()+"\tNombres:"+user.getDisplayName()+"\tAvatar:"+avatar+"\tCelular:"+user.getPhoneNumber());
                             }
                         } else {
@@ -192,9 +187,9 @@ public class LoginActivity extends AppCompatActivity {
                         updateUI();
                     }else{
                         String errorMsg = jsonObject.getString("error_msg");
-                        if (errorMsg.equals("Este usuario ya existe")){
-                            Toast.makeText(LoginActivity.this, "Este usuario ya existe", Toast.LENGTH_SHORT).show();
+                        if (errorMsg.equals("Este usuario ya existe: "+email)){
                             progreso.dismiss();
+                            updateUI();
                         }else {
                             progreso.dismiss();
                             Toast.makeText(LoginActivity.this, "Algo anda mal"+errorMsg, Toast.LENGTH_SHORT).show();

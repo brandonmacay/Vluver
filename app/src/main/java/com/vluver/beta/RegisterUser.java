@@ -1,5 +1,6 @@
 package com.vluver.beta;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -52,7 +53,7 @@ public class RegisterUser extends AppCompatActivity {
     RequestQueue mQueue;
     private FirebaseAuth mAuth;
     private RadioGroup rg;
-
+    private ProgressDialog progressDialog;
 
     String genre = null;
     private boolean isOlder = false;
@@ -62,6 +63,7 @@ public class RegisterUser extends AppCompatActivity {
         setContentView(R.layout.activity_registro);
         mQueue = Volley.newRequestQueue(RegisterUser.this);
         mAuth = FirebaseAuth.getInstance();
+        progressDialog = new ProgressDialog(this);
         rg = (RadioGroup) findViewById(R.id.register_rg);
         scrollView = (ScrollView) findViewById(R.id.scroll);
         nombres = (EditText) findViewById(R.id.names);
@@ -243,6 +245,9 @@ public class RegisterUser extends AppCompatActivity {
 
 
     private void register_user (String mEmail, String mPassword) {
+        progressDialog.setMessage("Registrando Usuario");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
         mAuth.createUserWithEmailAndPassword(mEmail, mPassword)
                 .addOnCompleteListener(RegisterUser.this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -285,7 +290,8 @@ public class RegisterUser extends AppCompatActivity {
                         }
                         else {
                             // If sign in fails, display a message to the user.
-                            Toast.makeText(RegisterUser.this, "Registration failed",
+                            progressDialog.dismiss();
+                            Toast.makeText(RegisterUser.this, "Registro fallido",
                                     Toast.LENGTH_SHORT).show();
 
                             // FirebaseAuth.getInstance().signOut();
@@ -305,17 +311,21 @@ public class RegisterUser extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(response);
                     boolean error = jsonObject.getBoolean("error");
                     if (!error){
+                        progressDialog.dismiss();
                         updateUI();
                     }else{
                         String errorMsg = jsonObject.getString("error_msg");
-                        if (errorMsg.equals("Este usuario ya existe")){
+                        if (errorMsg.equals("Este usuario ya existe: "+email)){
+                            progressDialog.dismiss();
                             updateUI();
                         }else {
+                            progressDialog.dismiss();
                             Toast.makeText(RegisterUser.this, "Algo anda mal", Toast.LENGTH_SHORT).show();
                         }
                     }
 
                 } catch (JSONException e) {
+                    progressDialog.dismiss();
                     Toast.makeText(RegisterUser.this, "Algo anda mal"+e, Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
@@ -324,6 +334,7 @@ public class RegisterUser extends AppCompatActivity {
 
             @Override
             public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
                 Toast.makeText(getApplicationContext(),
                         error.getMessage(), Toast.LENGTH_LONG).show();
             }
@@ -342,7 +353,7 @@ public class RegisterUser extends AppCompatActivity {
             }
 
         };
-        strReq.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS, 5, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        strReq.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS, 2, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         mQueue.add(strReq);
     }
 
